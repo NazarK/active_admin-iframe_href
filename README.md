@@ -15,14 +15,14 @@ Turbolinks and jquery supposed to be included in active_admin.js.
 //= require active_admin/iframe_href
 ```
 
+## 3.Profit
+
+Edit, view, show, create buttons will automatically open in iframe now.
 
 ## Notes
 This works correctly if after update you are redirected to collection index. Iframe is closed automatically if it gets collection index inside of it. Will not work if you a redirected to show action.
 
 
-## Profit
-
-Edit, view, show, create buttons will automatically open in iframe now.
 
 ## Maintainer
 [Nazar Kuliyev](https://github.com/NazarK)
