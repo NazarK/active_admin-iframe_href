@@ -12,12 +12,17 @@ gem 'active_admin-iframe_href', github: "NazarK/active_admin-iframe_href"
 Turbolinks and jquery supposed to be included in active_admin.js.
 
 ```javascript
-//= require active_admin/ifraem_href
+//= require active_admin/iframe_href
 ```
 
-## Usage
 
-Edit, view, show, create links will be automatically open in iframe now.
+## Notes
+This works correctly if after update you are redirected to collection index. Iframe is closed automatically if it gets collection index inside of it. Will not work if you a redirected to show action.
+
+
+## Profit
+
+Edit, view, show, create buttons will automatically open in iframe now.
 
 ## Maintainer
 [Nazar Kuliyev](https://github.com/NazarK)
