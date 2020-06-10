@@ -1,6 +1,10 @@
+$:.push File.expand_path('../lib', __FILE__)
+
+require './lib/active_admin/iframe_href/version'
+
 Gem::Specification.new do |spec|
-  spec.name        = 'active_admin-ifraem_href'
-  spec.version     = '1.0'
+  spec.name        = 'active_admin-iframe_href'
+  spec.version     = ActiveAdmin::IframeHref::Version::STRING
   spec.authors     = ['Nazar Kuliyev']
   spec.email       = ['nazar.kuliev@gmail.com']
 
