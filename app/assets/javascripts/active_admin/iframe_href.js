@@ -18,14 +18,8 @@ function iframe_href_closed_check() {
 }
 
 $(document).on("turbolinks:load",function() {
-  //console.log("turbolinks:load")
 
-  $("body.active_admin").find(".action_item a[href$='new'], .edit_link.member_link").addClass("iframe_href")
-/*  
-  if(("#index_table_articles").length==0) {
-    $("table.index_table.index .edit_link.member_link").addClass("iframe_href")
-  }
-*/
+  $("body.active_admin").find(".member_link.view_link, .action_item a[href$='new'], .edit_link.member_link, .blank_slate a").addClass("iframe_href").removeAttr("target")
 
   iframe_href_closed_check()
 })
