@@ -9,13 +9,14 @@ gem 'active_admin-iframe_href', github: "NazarK/active_admin-iframe_href"
 ```
 
 **2. Require javascript dependency in active_admin.js**
+
 Turbolinks and jquery supposed to be included in active_admin.js.
 
 ```javascript
 //= require active_admin/iframe_href
 ```
 
-## 3.Profit
+**3. Profit**
 
 Edit, view, show, create buttons will automatically open in iframe now.
 
