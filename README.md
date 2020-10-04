@@ -16,7 +16,22 @@ Turbolinks and jquery supposed to be included in active_admin.js.
 //= require active_admin/iframe_href
 ```
 
-**3. Profit**
+
+**2. Require javascript dependency in active_admin.js**
+
+Turbolinks and jquery supposed to be included in active_admin.js.
+
+```javascript
+//= require active_admin/iframe_href
+```
+
+**3. Require javascript dependency in active_admin.scss**
+
+```css
+//=require active_admin/iframe_href
+```
+
+**4. Profit**
 
 Edit, view, show, create buttons will automatically open in iframe now.
 
