@@ -85,3 +85,9 @@ $(document).on("click",".iframe_href",function(e) {
     iframe_href($(this).attr("href"),$(this).data())
   }
 });
+
+
+//to be called in active admin controller on update (and create)
+function iframe_href_close_after_changes() {
+  iframe_href_close(); Turbolinks.clearCache();
+}
