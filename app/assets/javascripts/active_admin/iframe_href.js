@@ -13,6 +13,7 @@ function iframe_href_closed_check() {
     if($("body.index").length>0) {
         parent.iframe_href_close()
     }
+    $("[autofocus]").focus()
   }
 
 }
