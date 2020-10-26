@@ -4,7 +4,7 @@
 /* keep scroll top on iframe_href_close */
 /* version 2.1
 /* restore scroll position on close going to index */
-
+/* version 2.2 - fixed refresh on close on esc click */
 
 function iframe_href_closed_check() {
   //in iframe
