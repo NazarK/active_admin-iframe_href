@@ -92,3 +92,5 @@ $(document).on("click",".iframe_href",function(e) {
 function iframe_href_close_after_changes() {
   iframe_href_close(); Turbolinks.clearCache();
 }
+
+
