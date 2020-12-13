@@ -34,8 +34,8 @@ $(document).keydown(function(e) {
       e.preventDefault()
     } else {
       console.log("Esc clicked in parent")
-      $(".iframe-dlg-close").click()    
-    }    
+      $(".iframe-dlg-close").click()
+    }
   }
 })
 
@@ -70,12 +70,19 @@ window.iframe_href_close = function(opts={}) {
 
 window.iframe_href = function(href, data) {
   $("body").append(`<div class='dlg-overlay' style='z-index:1000;position:fixed;top:0;left:0;bottom:0;right:0;background:rgba(0,0,0,0.2);' onclick="console.log('bg click');iframe_href_close({no_reload:${!data.iframeOnCloseReload} })"></div>`)
-  var height = data.iframeHeight || data.height || "96vh" 
-  var width = data.iframeWidth || data.width || "80%" 
+  if(data.size=="sm" || data.size=="small") {
+    data.width ||= "500px"
+    data.height ||= "600px"
+  }
+  if(data.size=="lg" || data.size=="large") {
+    data.width ||= "calc( 100% - 40px )"
+  }
+  var height = data.iframeHeight || data.height || "96vh"
+  var width = data.iframeWidth || data.width || "80%"
   var style = data.iframeStyle || "";
   var close_btn_caption = data.iframeCloseBtn || "Отмена"
   $("body .dlg-overlay").append(`<div class='dlg' style='position:relative;background:white;border-radius:4px;border:1px solid rgb(221,221,221);padding:0px;top:2vh;z-index:1001;margin:0 auto; width:${width}; height: ${height};"+style+"'><iframe style='width:100%;height:calc( 100% - 45px );border:none;'></iframe><button style='float:left;margin: 0 20px;margin-top:5px;' class='btn btn-default iframe-dlg-close' onclick="event.stopPropagation();iframe_href_close({no_reload:${!data.iframeOnCloseReload}});">${close_btn_caption}</button></div>`)
-  $(".dlg-overlay .dlg iframe").attr("src",href)  
+  $(".dlg-overlay .dlg iframe").attr("src",href)
 
 }
 
