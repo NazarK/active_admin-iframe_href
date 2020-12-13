@@ -76,8 +76,8 @@ window.iframe_href = function(href, data) {
   } else if(data.size=="lg" || data.size=="large") {
     data.width ||= "calc( 100% - 40px )"
   } else if(data.size && data.size.includes("x")) {
-    data.width ||= data.size.split("x")[0]
-    data.height ||= data.size.split("x")[1]
+    data.width ||= (data.size.split("x")[0]+"px")
+    data.height ||= (data.size.split("x")[1]+"px")
   }
   var height = data.iframeHeight || data.height || "96vh"
   var width = data.iframeWidth || data.width || "80%"
