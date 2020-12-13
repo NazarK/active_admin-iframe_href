@@ -72,7 +72,7 @@ window.iframe_href = function(href, data) {
   $("body").append(`<div class='dlg-overlay' style='z-index:1000;position:fixed;top:0;left:0;bottom:0;right:0;background:rgba(0,0,0,0.2);' onclick="console.log('bg click');iframe_href_close({no_reload:${!data.iframeOnCloseReload} })"></div>`)
   if(data.size=="sm" || data.size=="small") {
     data.width ||= "420px"
-    data.height ||= "360px"
+    data.height ||= "420px"
   } else if(data.size=="lg" || data.size=="large") {
     data.width ||= "calc( 100% - 40px )"
   } else if(data.size && data.size.includes("x")) {
