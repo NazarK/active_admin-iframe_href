@@ -12,12 +12,16 @@ function iframe_href_closed_check() {
     $("body").addClass("in_iframe")
     $(".header, #footer, #title_bar, li.cancel").hide()
     if($("body.index").length>0) {
+      // if not filtered index then just close it, assuming index is after form submit
+      if(!document.URL.includes("q%5B")) {
         parent.iframe_href_close()
+      }
     }
     $("[autofocus]").focus()
   }
 
 }
+
 
 $(document).on("turbolinks:load",function() {
 
