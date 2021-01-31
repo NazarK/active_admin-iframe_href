@@ -87,7 +87,8 @@ window.iframe_href = function(href, data) {
   var width = data.iframeWidth || data.width || "80%"
   var style = data.iframeStyle || "";
   var close_btn_caption = data.iframeCloseBtn || "Отмена"
-  $("body .dlg-overlay").append(`<div class='dlg' style='position:relative;background:white;border-radius:4px;border:1px solid rgb(221,221,221);padding:0px;top:2vh;z-index:1001;margin:0 auto; width:${width}; height: ${height};"+style+"'><iframe style='width:100%;height:calc( 100% - 45px );border:none;'></iframe><button style='float:left;margin: 0 20px;margin-top:5px;' class='btn btn-default iframe-dlg-close' onclick="event.stopPropagation();iframe_href_close({no_reload:${!data.iframeOnCloseReload}});">${close_btn_caption}</button></div>`)
+  $("body .dlg-overlay").append(`<div class='dlg' style='position:relative;background:white;border-radius:4px;border:1px solid rgb(221,221,221);padding:0px;top:2vh;z-index:1001;margin:0 auto; width:${width}; max-width:100%; height: ${height}; max-height:96vh; "+style+"'><iframe style='width:100%;height:calc( 100% - 45px );border:none;'></iframe><button style='float:left;margin: 0 20px;margin-top:5px;' class='btn btn-default iframe-dlg-close' onclick="event.stopPropagation();iframe_href_close({no_reload:${!data.iframeOnCloseReload}});">${close_btn_caption}</button></div>`)  
+
   $(".dlg-overlay .dlg iframe").attr("src",href)
 
 }
