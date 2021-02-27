@@ -75,13 +75,13 @@ window.iframe_href_close = function(opts={}) {
 window.iframe_href = function(href, data) {
   $("body").append(`<div class='dlg-overlay' style='z-index:1000;position:fixed;top:0;left:0;bottom:0;right:0;background:rgba(0,0,0,0.2);' onclick="console.log('bg click');iframe_href_close({no_reload:${!data.iframeOnCloseReload} })"></div>`)
   if(data.size=="sm" || data.size=="small") {
-    data.width ||= "420px"
-    data.height ||= "420px"
+    data.width = data.width || "420px"
+    data.height = data.height || "420px"
   } else if(data.size=="lg" || data.size=="large") {
-    data.width ||= "calc( 100% - 40px )"
+    data.width = data.width || "calc( 100% - 40px )"
   } else if(data.size && data.size.includes("x")) {
-    data.width ||= (data.size.split("x")[0]+"px")
-    data.height ||= (data.size.split("x")[1]+"px")
+    data.width = data.width || (data.size.split("x")[0]+"px")
+    data.height = data.height || (data.size.split("x")[1]+"px")
   }
   var height = data.iframeHeight || data.height || "96vh"
   var width = data.iframeWidth || data.width || "80%"
