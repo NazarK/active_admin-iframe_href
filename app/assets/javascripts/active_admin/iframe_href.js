@@ -5,6 +5,7 @@
 /* version 2.1
 /* restore scroll position on close going to index */
 /* version 2.2 - fixed refresh on close on esc click */
+/* 2.3 - disabling scroll on body while iframe modal opened */
 
 function iframe_href_closed_check() {
   //in iframe
@@ -63,6 +64,10 @@ $(document).on("turbolinks:render",function() {
 window.iframe_href_close = function(opts={}) {
   console.log("iframe_href_close", {opts})
   $('.dlg-overlay').remove();
+  $("body").removeClass("iframe-href-modal")
+  $("body").css({"padding-right" : ''});
+
+
   if(!opts.no_reload) {
     Turbolinks.top = $(document).scrollTop();
     Turbolinks.left = $(document).scrollLeft();
@@ -90,6 +95,9 @@ window.iframe_href = function(href, data) {
   $("body .dlg-overlay").append(`<div class='dlg' style='position:relative;background:white;border-radius:4px;border:1px solid rgb(221,221,221);padding:0px;top:2vh;z-index:1001;margin:0 auto; width:${width}; max-width:100%; height: ${height}; max-height:96vh; "+style+"'><iframe style='width:100%;height:calc( 100% - 45px );border:none;'></iframe><button style='float:left;margin: 0 20px;margin-top:5px;' class='btn btn-default iframe-dlg-close' onclick="event.stopPropagation();iframe_href_close({no_reload:${!data.iframeOnCloseReload}});">${close_btn_caption}</button></div>`)  
 
   $(".dlg-overlay .dlg iframe").attr("src",href)
+
+  $("body").addClass("iframe-href-modal")
+  $("body").css({"padding-right" : $.position.scrollbarWidth()+"px"});
 
 }
 
