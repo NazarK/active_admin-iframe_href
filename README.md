@@ -1,4 +1,5 @@
-# ActiveAdmin IFrame Href
+# ActiveAdmin IFrame Hyper Reference
+Open links in modal window by adding class 'iframe_href' to "a" tag.
 Open edit, view, create links in iframe (instead of separate tab) in ActiveAdmin. Allowing you to avoid opening multiple tabs, you will stay on same tab in browser.
 
 
@@ -7,15 +8,6 @@ Open edit, view, create links in iframe (instead of separate tab) in ActiveAdmin
 ```ruby
 gem 'active_admin-iframe_href', github: "NazarK/active_admin-iframe_href"
 ```
-
-**2. Require javascript dependency in active_admin.js**
-
-Turbolinks and jquery supposed to be included in active_admin.js.
-
-```javascript
-//= require active_admin/iframe_href
-```
-
 
 **2. Require javascript dependency in active_admin.js**
 
