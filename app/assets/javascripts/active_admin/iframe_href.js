@@ -6,6 +6,8 @@
 /* restore scroll position on close going to index */
 /* version 2.2 - fixed refresh on close on esc click */
 /* 2.3 - disabling scroll on body while iframe modal opened */
+/* setting version number according to gem version number */
+/* 0.2.1 - add padding to body only if there was scroll */
 
 function iframe_href_closed_check() {
   //in iframe
@@ -44,6 +46,9 @@ $(document).keydown(function(e) {
   }
 })
 
+
+//message handling not really needed here
+//closing can be done via calling window.iframe_href_close() when on same domain
 $(window).on("message", function(e) {
     var message = e.originalEvent.data;  // Should work.
     if(message=="close_iframe_href") {
@@ -68,6 +73,7 @@ window.iframe_href_close = function(opts={}) {
   $("body").css({"padding-right" : ''});
 
 
+  //by default realoding on iframe_href_close
   if(!opts.no_reload) {
     Turbolinks.top = $(document).scrollTop();
     Turbolinks.left = $(document).scrollLeft();
@@ -77,6 +83,7 @@ window.iframe_href_close = function(opts={}) {
   }
 }
 
+//function for building iframe_href modal
 window.iframe_href = function(href, data) {
   $("body").append(`<div class='dlg-overlay' style='z-index:1000;position:fixed;top:0;left:0;bottom:0;right:0;background:rgba(0,0,0,0.2);' onclick="console.log('bg click');iframe_href_close({no_reload:${!data.iframeOnCloseReload} })"></div>`)
   if(data.size=="sm" || data.size=="small") {
@@ -96,8 +103,11 @@ window.iframe_href = function(href, data) {
 
   $(".dlg-overlay .dlg iframe").attr("src",href)
 
-  $("body").addClass("iframe-href-modal")
-  $("body").css({"padding-right" : $.position.scrollbarWidth()+"px"});
+  //if vertical scrollbar is visible
+  if(document.scrollingElement.scrollHeight > document.scrollingElement.clientHeight) {
+    $("body").addClass("iframe-href-modal")
+    $("body").css({"padding-right" : $.position.scrollbarWidth()+"px"});
+  }
 
 }
 
