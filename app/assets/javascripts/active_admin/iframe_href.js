@@ -30,6 +30,7 @@ $(document).on("turbolinks:load",function() {
 
   $("body.active_admin").find(".member_link.view_link, .action_item a[href$='new'], .edit_link.member_link, .blank_slate a").addClass("iframe_href").removeAttr("target")
 
+  data_modals_size_apply()
   iframe_href_closed_check()
 })
 
@@ -123,6 +124,28 @@ $(document).on("click",".iframe_href",function(e) {
 //to be called in active admin controller on update (and create)
 function iframe_href_close_after_changes() {
   iframe_href_close(); Turbolinks.clearCache();
+}
+
+
+// usage in active admin page:
+//  action_item only: :index do
+//    div "data-modals-size"=>"1250x550"
+//  end
+
+function data_modals_size_apply() {
+  //iframe href util
+  $("[data-modals-size]").each(function() {
+    var size = $(this).attr("data-modals-size")
+    var width = size.split("x")[0]+"px"
+    var height = size.split("x")[1]+"px"
+
+    $(".member_link.view_link, .action_item a[href$='new'], .edit_link.member_link, .blank_slate a").each(function() {
+      if($(this).hasClass("iframe_href")) {
+        $(this).attr("data-iframe-width",width).attr('data-iframe-height',height)
+      }
+    })
+    
+  })
 }
 
 
